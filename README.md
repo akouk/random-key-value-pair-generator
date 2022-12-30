@@ -53,3 +53,8 @@ key3 float
 #Output Data Format
 
 The generated JSON objects will be written to a file called "dataToIndex.txt" in the same directory as the code file. Each JSON object will be on its own line. 
+
+Notes
+
+- If a key-value pair is nested, the value will be a JSON object with its own set of key-value pairs.
+- Keys at the root level must be unique. If a key appears more than once at the root level, it will be suffixed with an increasing integer starting from 0.
