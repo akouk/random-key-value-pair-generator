@@ -25,7 +25,7 @@ python3 random_key-value_generator.py -n <number of lines> -m <maximum keys> -l 
 ```
 
 
-# Parameters
+### Parameters
 
 - "-k": a file containing a space-separated list of key names and their data types that can be used to generate tha data
 - "-n": the number of data items to generate
@@ -35,7 +35,7 @@ python3 random_key-value_generator.py -n <number of lines> -m <maximum keys> -l 
 
 
 
-# Example
+### Example
 
 ```python
 python3 dataGenerator.py -n 5 -m 3 -l 10 -d 2 -f keyFile.txt
@@ -44,7 +44,7 @@ This command will generate 5 JSON objects with a maximum of 3 keys each, string 
 
 
 
-# Key File Format
+### Key File Format
 
 The file containing the space-separated list of key names and their data types should contain one key and its data type per line, separated by a single space. The data type can be "string", "int", or "float".
 
@@ -57,11 +57,13 @@ key3 float
 ```
 
 
-# Output Data Format
+### Output Data Format
 
 The generated JSON objects will be written to a file called "dataToIndex.txt" in the same directory as the code file. Each JSON object will be on its own line. 
 
-Notes
+
+
+## Notes
 
 - If a key-value pair is nested, the value will be a JSON object with its own set of key-value pairs.
 - Keys at the root level must be unique. If a key appears more than once at the root level, it will be suffixed with an increasing integer starting from 0.
