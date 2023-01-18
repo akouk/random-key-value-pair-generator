@@ -3,10 +3,11 @@ import os
 import random
 import string
 import json
-from typing import Type, Union, Dict
+import typing as tp
 
 # chance to add [] value in key
-EMPTY_DATA_CHANCE = 20
+EMPTY_DATA_CHANCE = 80
+
 
 class ValueGenerator:
 
@@ -23,7 +24,7 @@ class ValueGenerator:
         return random.uniform(min_value, max_value)
 
     # Function that generates random value
-    def generate_random_value(self, data_type: str, max_string_length: int, is_root: bool) -> Type[Union[str, int, float]]:
+    def generate_random_value(self, data_type: str, max_string_length: int, is_root: bool) -> tp.Type[tp.Union[str, int, float]]:
 
         random_int = self.generate_random_integer(0, 100)
         if random_int < EMPTY_DATA_CHANCE and is_root:
@@ -36,20 +37,22 @@ class ValueGenerator:
             return self.generate_random_float(0.0,100.0)
 
 
-class KeyValuePairGenerator(ValueGenerator):
+class KeyValuePairGenerator():
       
     def __init__(self, kv_dict: dict) -> None:
         self.kv_dict = kv_dict
+        self.value_generator = ValueGenerator()
     
-    @staticmethod
+
     def generate_random_KeyValue_pair(
+        self,
         num_lines: int, 
         max_nesting: int, 
         max_string_length: int,
         max_keys: int,
         kv_dict: dict,
         is_root: bool
-    ) -> Dict[str, Union[str, int, float, None, Dict]]:
+    ) -> tp.Dict[str, tp.Union[str, int, float, None, tp.Dict]]:
 
         random_data = {}
 
@@ -71,7 +74,7 @@ class KeyValuePairGenerator(ValueGenerator):
             # If the maximum level of nesting is greater than 0, then a random number of keys for the current level of nesting can be generated, up to the specified keys inside each value
             # and the function can be called recursively, to generate the values of each these keys
             if max_nesting > 0 and random_data[key] != None:
-                random_data[key] = KeyValuePairGenerator.generate_random_KeyValue_pair(
+                random_data[key] = self.generate_random_KeyValue_pair(
                     num_lines, 
                     max_nesting-1, 
                     max_string_length, 
@@ -104,16 +107,15 @@ class DataGenerator(KeyValuePairGenerator):
         # Function that reads the given .txt file and stores each lines key and its data type in a dictionary
     def read_key_file(self, input_file: str) -> dict:
         key_dict = {}
+        with open(self.input_file, 'r') as f:
+            input_key_file_lines = [line.rstrip('\n') for line in f]
 
-        key_file = open(input_file, "r")
-        file_lines = key_file.readlines()
-        key_file.close()
-        for each_line in file_lines:
+        for each_line in input_key_file_lines:
             try:
                 key_name, data_type = each_line.strip().split()
                 key_dict[key_name] = data_type
             except SyntaxError:
-                print("Invalid Syntax. Each line must contain two parts: key data type")
+                print("Invalid Syntax. Each line must contain two parts: key and data type")
 
         # Return the dictionary
         return key_dict
@@ -126,9 +128,9 @@ class DataGenerator(KeyValuePairGenerator):
 
         with open(self.file_to_gerate_data, "w") as generated_file: # Open the output file for writing
 
-            for i in range(self.num_lines):
+            for _ in range(self.num_lines):
                 # Generate a random key-value pair
-                generated_data = KeyValuePairGenerator.generate_random_KeyValue_pair(
+                generated_data = self.generate_random_KeyValue_pair(
                     self.num_lines, 
                     self.max_nesting,
                     self.max_string_length,
@@ -184,7 +186,6 @@ def parse_dataCreation_arguments():
 
 # This code will first check if the file has a .txt extension. 
 def txt_file(arg):
-
     if not os.path.isfile(arg):
         raise argparse.ArgumentTypeError(f"Error: {arg} does not exist. Please provide an existing file!")
     elif not os.path.splitext(arg)[1] == ".txt":
@@ -192,7 +193,6 @@ def txt_file(arg):
     return arg
 
 def int_type(arg):
-
     if not arg.isdigit():
         raise argparse.ArgumentTypeError(f"Error: {arg} is not an integer. Please provide an integer as argument!")
     return int(arg)
