@@ -6,8 +6,8 @@ This code generates a specified number of random JSON objects with nested key-va
 
 ## Requirements
 
-- Python 3.7 or higher
-- argparse library (comes with Python
+- Python 3
+- argparse library (comes with Python)
 - os library (comes with Python)
 - random library (comes with Python)
 - string library (comes with Python)
