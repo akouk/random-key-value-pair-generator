@@ -4,18 +4,6 @@ This code generates a specified number of random JSON objects with nested key-va
 
 
 
-## Requirements
-
-- Python 3
-- argparse library (comes with Python)
-- os library (comes with Python)
-- random library (comes with Python)
-- string library (comes with Python)
-- json library (comes with Python)
-- typing library (comes with Python)
-
-
-
 ## Usage
 The data generation program is used to generate random data in the form of key-value pairs that can be stored in a key-value store.
 
