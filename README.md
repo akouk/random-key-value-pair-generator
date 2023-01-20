@@ -60,6 +60,12 @@ key3 float
 ### Output Data Format
 
 The generated JSON objects will be written to a .txt file in the same directory as the code file. Each JSON object will be on its own line. 
+The output data should generated as follows:
+```python
+{'key1': {'key2' : {'key3': 4, 'key4': 8}}}
+{'key5': {'key6': 2, 'key7': 6}}
+{'key8': {"key9': {'key10': {'key11': 3} , 'key12': {'key13': 7, 'key14': 11}, 'key15': {'key16': 5}}}}
+```
 
 
 
