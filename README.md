@@ -9,7 +9,7 @@ The data generation program is used to generate random data in the form of key-v
 
 To use this code, open a terminal or command prompt in the same directory as the code file and run the following command:
 ```python
-python3 random_key-value_generator.py -n <number of lines> -m <maximum keys> -l <maximum string length> -d <maximum level of nesting> -f <key file>
+python3 random_key-value_generator.py -k <key file> -n <number of lines> -d <maximum level of nesting> -l <maximum string length> -m <maximum keys> 
 ```
 
 
