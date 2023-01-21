@@ -27,9 +27,9 @@ python3 random_key-value_generator.py -n <number of lines> -m <maximum keys> -l 
 ### Example
 
 ```python
-python3 random_data_generation.py -k keyFile.txt -n 50 -d 3 -l 4 -m 5 -o outputFile.txt
+python3 random_data_generation.py -k key_file.txt -n 3 -d 3 -l 4 -m 5 -o output_file.txt
 ```
-This command will generate 50 JSON objects with a maximum of 5 keys each, string values with a maximum length of 4, and a maximum level of nesting of 3. The keys and data types for the key-value pairs are specified in the "keyFile.txt" file.
+This command will generate 3 JSON objects with a maximum of 5 keys each, string values with a maximum length of 4, and a maximum level of nesting of 3. The keys and data types for the key-value pairs are specified in the "keyFile.txt" file.
 
 
 ### Key File Format
@@ -48,13 +48,6 @@ key3 float
 ### Output Data Format
 
 The generated JSON objects will be written to a .txt file in the same directory as the code file. Each JSON object will be on its own line. 
-The output data should generated as follows:
-```python
-{'key1': {'key2' : {'key3': 4, 'key4': 8}}}
-{'key5': {'key6': 2, 'key7': 6}}
-{'key8': {"key9': {'key10': {'key11': 3} , 'key12': {'key13': 7, 'key14': 11}, 'key15': {'key16': 5}}}}
-```
-
 
 
 ## Notes
