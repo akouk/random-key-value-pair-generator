@@ -36,7 +36,7 @@ This command will generate 3 JSON objects with a maximum of 5 keys each, string 
 
 The file containing the space-separated list of key names and their data types should contain one key and its data type per line, separated by a single space. The data type can be "string", "int", or "float".
 
-Here is an example "keyFile.txt" file:
+Here is an example "key_file.txt" file:
 
 ```python
 key1 string
