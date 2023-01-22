@@ -20,7 +20,7 @@ python3 random_key-value_generator.py -k <key file> -n <number of lines> -d <max
 - `-d` : the maximum depth of nesting for the key-value pairs
 - `-l` : the maximum length of string values
 - `-m` : the maximum number of keys per nesting level
--  `o` : the name of the generated data file
+- `-o` : the name of the generated data file
 
 
 
