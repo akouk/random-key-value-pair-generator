@@ -15,12 +15,12 @@ python3 random_key-value_generator.py -k <key file> -n <number of lines> -d <max
 
 ### Parameters
 
-- `'-k'`: a file containing a space-separated list of key names and their data types that can be used to generate tha data
-- `'-n'`: the number of data items to generate
-- `'-d`': the maximum depth of nesting for the key-value pairs
-- `'-l'`: the maximum length of string values
-- `'-m'`: the maximum number of keys per nesting level
--  `'o'`: the name of the generated data file
+- `-k` : a file containing a space-separated list of key names and their data types that can be used to generate tha data
+- `-n` : the number of data items to generate
+- `-d` : the maximum depth of nesting for the key-value pairs
+- `-l` : the maximum length of string values
+- `-m` : the maximum number of keys per nesting level
+-  `o` : the name of the generated data file
 
 
 
