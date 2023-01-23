@@ -56,7 +56,6 @@ class KeyValuePairGenerator():
 
         random_data = {}
 
-        # Generate a random number of keys up to the maximum specified by the -m parameter
         num_keys = random.randint(1, max_keys)
 
         value_generator = ValueGenerator()
@@ -104,7 +103,7 @@ class DataGenerator(KeyValuePairGenerator):
         self.max_keys = max_keys
         self.file_to_gerate_data = file_to_generate_data
 
-        # Function that reads the given .txt file and stores each lines key and its data type in a dictionary
+    # Function that reads the given .txt file and stores each lines key and its data type in a dictionary
     def read_key_file(self, input_file: str) -> dict:
         key_dict = {}
         with open(self.input_file, 'r') as f:
@@ -117,19 +116,16 @@ class DataGenerator(KeyValuePairGenerator):
             except SyntaxError:
                 print("Invalid Syntax. Each line must contain two parts: key and data type")
 
-        # Return the dictionary
         return key_dict
 
     # Function that generates and writes the data to a file
     def generate_and_write_data_to_file(self) -> None:
 
-        # Read the key file and store the keys and their data types in a dictionary
         self.kv_dict = self.read_key_file(self.input_key_file)
 
-        with open(self.file_to_gerate_data, "w") as generated_file: # Open the output file for writing
+        with open(self.file_to_gerate_data, "w") as generated_file: 
 
             for _ in range(self.num_lines):
-                # Generate a random key-value pair
                 generated_data = self.generate_random_KeyValue_pair(
                     self.num_lines, 
                     self.max_nesting,
@@ -140,7 +136,7 @@ class DataGenerator(KeyValuePairGenerator):
                 )
                 generated_file.write(json.dumps(generated_data) + "\n") # Write the data to the output file in JSON format
 
-        generated_file.close() # Close the output file
+        generated_file.close()
 
 
 def parse_dataCreation_arguments():
@@ -184,7 +180,6 @@ def parse_dataCreation_arguments():
     dataCreation_args = dataCreation_parser.parse_args()
     return dataCreation_args
 
-# This code will first check if the file has a .txt extension. 
 def txt_file(arg):
     if not os.path.isfile(arg):
         raise argparse.ArgumentTypeError(f"Error: {arg} does not exist. Please provide an existing file!")
@@ -213,5 +208,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# python3 random_data_generation.py -k keyFile.txt -n 50 -d 3 -l 4 -m 5 -o outputFile.txt
